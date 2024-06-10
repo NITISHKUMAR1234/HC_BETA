@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f6f9ff;
+}
+.card{
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+}
+
+.card-header{
+    background: red;
+    color: white;
+    padding: 0 10px;
+}
+.discription {
+    height: 120px;
+}
+
+#allData {
+    height: auto;
+    overflow: auto;
+}
+
+.main-img {
+    background-color: gray;
+    max-width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.main-img img {
+    max-width: 100%;
+    height: 300px;
+}
+.sub-title {
+    color: gray;
+}
+
+.editIcon {
+    float: right;
+}
+
+.form-control:focus {
+    border: 1px solid #4B0082;
+    box-shadow: none;
+}
+
+/*-----model box start-----*/
+
+.open-model .model-header {
+    float: right;
+}
+
+.modal-body {
+    padding: 0 13px;
+}
+
+.close {
+    background: transparent;
+    border: none;
+}
+
+.close-icon {
+    font-size: 25px;
+    padding-right: 10px;
+}
+
+#discription {
+    height: 120px;
+    overflow: auto;
+}
+
+/*-----model box end-----*/
+
+
+.headText {
+    margin-top: 0 !important;
+}
+
+.deleteIcon {
+    float: right;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 13px;
+}
+/* styling for loader start */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+}
+
+.loader {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #3498db;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.blur {
+    filter: blur(5px);
+}
+
+
+/* styling for loader end */

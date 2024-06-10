@@ -1,0 +1,74 @@
+.form-control:focus {
+    box-shadow: none;
+}
+.card {
+    box-shadow: 0px 0px 10px 0px lightgrey;
+}
+
+.card-logo img {
+    border: 2px solid black;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+.card-title h3 {
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-title p {
+    text-align: center;
+    color: gray;
+}
+
+.signinBtn form .form-group .btn {
+    border: 1px solid lightgrey;
+}
+
+.signinBtn form .form-group a {
+    text-decoration: none;
+    color: #7386d5;
+}
+
+.signinBtn form .form-group a img {
+    float: left;
+}
+
+.line p {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid lightgrey;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+.line p span {
+    background: #fff;
+    padding: 0 10px;
+    color: lightgrey;
+}
+
+.card .card-body #form .form-group input {
+    border-bottom: none;
+}
+
+.card .card-body #form #togglePassword {
+    position: absolute;
+    top: 80%;
+    right: 30px;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.card .card-body #form .form-group a {
+    text-decoration: none;
+    float: right;
+}
+
+.card .card-body #form .action .loginBtn {
+    background: #7386d5;
+    color: white;
+}
+

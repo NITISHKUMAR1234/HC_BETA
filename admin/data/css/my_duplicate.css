@@ -1,0 +1,199 @@
+/* ----------------------------------------------------
+styling for duplicate page start 
+------------------------------------------------------*/
+
+/* -----------------------------------------------------
+styling for body start
+-------------------------------------------------------*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f6f9ff !important;
+}
+
+/* -----------------------------------------------------
+styling for body end
+-------------------------------------------------------*/
+
+/* -----------------------------------------------------
+css for page title start 
+-------------------------------------------------------*/
+.container-fluid .row .page-title h4 {
+    font-weight: bold;
+    color: red;
+}
+
+.container-fluid .row .page-title h4 i {
+    color: red;
+}
+
+.container-fluid .row .page-title .link-items {
+    display: flex;
+}
+
+.container-fluid .row .page-title a {
+    text-decoration: none;
+    color: lightgrey;
+    font-size: 12px;
+}
+
+/* -----------------------------------------------------
+css for page title end 
+------------------------------------------------------*/
+
+/* -----------------------------------------------------
+css for overview card start 
+------------------------------------------------------*/
+
+.overview-card .card {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+    margin: 0 12px;
+    background: aliceblue;
+}
+
+.overview-card .card .card-title h6 {
+    font-weight: bold;
+    color: red;
+}
+
+.overview-card .card .card-title p {
+    font-size: 12px;
+    color: lightgrey;
+}
+
+.overview-card .card .card-sub-title h6 {
+    font-weight: bold;
+    border: 1px solid red;
+    background: red;
+    border-radius: 50%;
+    padding: 10px;
+    color: white;
+}
+
+/* ------------------------------------------------------
+css for overview card end 
+-------------------------------------------------------*/
+
+/* ------------------------------------------------------
+ css for duplicate table start 
+ -------------------------------------------------------*/
+
+.table-card-title h5 {
+    font-weight: bold;
+    color: red;
+}
+
+.table-card-title i {
+    font-weight: bold;
+    color: red;
+}
+
+.card-table .card {
+    overflow: auto;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+    margin: 0 12px;
+    background: aliceblue;
+    white-space: nowrap;
+}
+
+/* -----------------------------------------------------
+css for duplicate table end
+------------------------------------------------------ */
+
+/* -----------------------------------------------------
+Css for update form start
+--------------------------------------------------------*/
+
+.open-model .model-header {
+    float: right;
+}
+
+.modal-body {
+    padding: 0 13px;
+}
+
+.close {
+    background: transparent;
+    border: none;
+}
+
+.close-icon {
+    font-size: 25px;
+    padding-right: 10px;
+}
+
+/* styling of update form images start */
+#imgId img {
+    min-width: 100%;
+    width: 200px;
+    height: 200px;
+}
+/* styling of update form images end */
+
+/* css for discription box start */
+#discription {
+    height: 120px;
+    overflow: auto;
+}
+/* css for discription box end */
+
+/*------------------------------------------------------
+Css for update form end 
+------------------------------------------------------*/
+
+
+/* ----------------------------------------------------
+styling for loader start 
+----------------------------------------------------- */
+
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+}
+
+.loader {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #3498db;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.blur {
+    filter: blur(5px);
+}
+
+
+/* -------------------------------------------------------
+styling for loader end 
+--------------------------------------------------------*/
+
+/* ------------------------------------------------------
+styling for duplicate page end 
+--------------------------------------------------------*/

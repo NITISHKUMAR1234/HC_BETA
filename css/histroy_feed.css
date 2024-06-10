@@ -1,0 +1,129 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.navigation-link{
+    text-align: center;    
+    color: black;
+    padding: 0 10px;    
+    text-decoration: none !important;
+}
+.icon{
+    font-size: 25px !important;
+    position: relative;
+}
+.like{
+    padding: 0 5px;
+}
+.dislike{
+    padding: 0 5px;
+}
+.main-img {
+    background-color: gray; 
+    text-align: center;
+}
+
+.main-img img {
+    max-width: 100%;
+    height: 300px;
+}
+.filter_buttons{
+    display: flex;
+    overflow-x: auto;
+    margin-top: 60px;
+    width: 100% !important;
+    padding: 10px 0 !important;
+}
+/* code for fileration button in the small device */
+@media screen and (max-width: 580px){
+    .filter_buttons{
+        width: 710px;
+    }
+}
+.filter_buttons .eventBtn{
+    background-color: lightgrey;
+    color: #000;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 30px;
+    white-space: nowrap;
+}
+.filter_buttons .active{
+    background: red !important;
+    color: white;
+    font-weight: bold;
+    border: 1px solid red;
+}
+
+/* ---------------------------------------------------
+custom scroll bar start 
+-----------------------------------------------------*/
+  
+/* Customize scrollbar appearance */
+.filter_buttons::-webkit-scrollbar {
+    width: 17px; /* Set the width of the scrollbar */
+    height: 5px; 
+}
+
+.filter_buttons::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Set the background color of the scrollbar track */
+  }
+  
+  .filter_buttons::-webkit-scrollbar-thumb {
+    background-color: grey!important; /* Set the color of the scrollbar thumb */
+    border-radius: 8px; /* Rounded corners for the scrollbar thumb */
+  }
+  
+  .filter_buttons::-webkit-scrollbar-thumb:hover {
+    background-color: grey!important; /* Set the color of the scrollbar thumb on hover */
+  }
+  /* -----------------------------------------------
+  custom scroll bar end 
+  -------------------------------------------------*/
+
+  /* ------------------------------------------------
+  styling for loader start 
+  --------------------------------------------------*/
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+}
+
+.loader {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #3498db;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.blur {
+    filter: blur(5px);
+}
+
+
+/* ---------------------------------------------------
+styling for loader end 
+----------------------------------------------------*/
