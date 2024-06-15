@@ -201,23 +201,26 @@ $urlYear=$_GET['year'];  // get url year
                 $calenderRow = mysqli_fetch_assoc($calenderQuery);
                 $maxTitleLength = 40;
                 $caltitle = $calenderRow['fdTitle'];
-                if (strlen($caltitle) > $maxTitleLength) {
+                if (strlen($caltitle) > $maxTitleLength) {;
                 $title = substr($caltitle, 0, $maxTitleLength) . "..";
+                if(isset($title)){$title=$title;}else{$title="null";}
                 }else{
                 $title = $caltitle;
                 }
-
                 $maxSubTitleLength = 20;
                 $cal_sub_title = $calenderRow['fdSubTitle'];
 
                 if (strlen($cal_sub_title) > $maxSubTitleLength) {
                 $sub_title = substr($cal_sub_title, 0, $maxSubTitleLength) . "..";
+                if(isset($sub_title)){$sub_title=$sub_title;}else{$sub_title="null";}
                 }else{
                 $sub_title = $cal_sub_title;
                 }
 
                 if($calenderRow['fdImg']){
+                    
                 $img = $calenderRow['fdImg'];
+                if(isset($img)){$img=$img;}else{$img="null";}
                 }
                 } else{
                 $histroyQuery=mysqli_query($conn,"SELECT fd_title, fd_sub_title,fd_discription,fd_img FROM `tb_history` WHERE
@@ -230,6 +233,7 @@ $urlYear=$_GET['year'];  // get url year
                 $histroy_title_length = 40;
                 $histroy_title = $histroyRow['fd_title'];
                 $histroy_disc = $histroyRow['fd_discription']; // store discription
+                if(isset($histroy_disc)){$histroy_disc=$histroy_disc;}else{$histroy_disc="null";}  
 
                 if (strlen($histroy_title) > $histroy_title_length) {
                 $title = substr($histroy_title, 0, $histroy_title_length) . "..";
@@ -242,19 +246,28 @@ $urlYear=$_GET['year'];  // get url year
 
                 if (strlen($histroy_sub_title) > $histroy_title_length) {
                 $sub_title = substr($histroy_sub_title, 0, $histroy_sub_title_length) . "..";
+                if(isset($sub_title)){$sub_title=$sub_title;}else{$sub_title="null";}
                 }
                 else{
                 $sub_title = $histroy_sub_title;
                 }
                 if($histroyRow['fd_img']){
                 $img = $histroyRow['fd_img'];
+                if(isset($img)){$img=$img;}else{$img="null";}
                 }
                 }
             }
                 /* code for fetch calender details end */
 
                 /* code for highlight today card */
-
+                // $sub_title = isset($_POST['sub_title']) ? $_POST['sub_title'] : "";
+                // $title = isset($_POST['title']) ? $_POST['title'] : "";
+                // $img = isset($_POST['fd_img']) ? $_POST['fd_img'] : "";
+                if(isset($sub_title)){$sub_title=$sub_title;}else{$sub_title="null";}
+                if(isset($sub_title)){$sub_title=$sub_title;}else{$sub_title="null";}
+                if(isset($img)){$img=$img;}else{$img="null";}
+                if(isset($histroy_disc)){$histroy_disc=$histroy_disc;}else{$histroy_disc="null";}
+                
                 if(($today==$i) && ($newUrlMonth==$currentMonth) && ($urlYear==$currentYear))
                 {
                 echo '<div id="calcard" class="cardcal mx-md-2 my-md-2 my-3">

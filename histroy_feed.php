@@ -1,5 +1,5 @@
 <?php
-session_start(); // session is start
+// session_start(); // session is start
 require_once('include/header.php'); // include header file
 require_once('include/config.php'); // include connection file
 
