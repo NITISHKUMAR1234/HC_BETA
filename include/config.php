@@ -1,5 +1,12 @@
 <?php
-$conn = mysqli_connect("localhost","nikusoft_test_ca","+&$^,{2[}s&q","nikusoft_test_cal");
+// $conn = mysqli_connect("localhost","nikusoft_test_ca","+&$^,{2[}s&q","nikusoft_test_cal");
+$servername = "94.203.132.33";
+$username = "root";
+$password = "Mirach@12345$";
+$dbname = "dbHcTest";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
 
 // function for run Query
 define('SITE_URL','https://onespect.in.net/Calendar/beta/');
