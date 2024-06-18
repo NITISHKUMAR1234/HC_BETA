@@ -1,4 +1,7 @@
 deployment:
   tasks:
-    - export DEPLOY_PATH=/home/nikusoft/public_html/historical-calendar.onespect.com/beta2
-    - /bin/cp index.html $DEPLOYPATH
+    - echo "Starting deployment..."
+    - cd /home/nikusoft/public_html/historical-calendar.onespect.com/beta2
+    - git fetch origin
+    - git reset --hard origin/main
+    - echo "Deployment completed successfully!"
