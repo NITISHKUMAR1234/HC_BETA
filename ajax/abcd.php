@@ -253,9 +253,11 @@ if (isset($_POST["limit"]) && isset($_POST["start"])) {
                                         <div class="card-head m-0" id="heading">
                                             <h5 class="mx-3 my-0 font-weight-bold">
                                                 <?php echo $title; ?>
+                                                <?php print_r($title);?>
                                             </h5>
                                             <h6 class="mx-3 my-0 font-italic">
                                                 <?php echo $sub_title; ?>
+                                                <?php print_r($sub_title);?>
                                             </h6>
                                             <!-- <p class="text-center m-0">Hello Programmer</p> -->
                                         </div>
@@ -314,24 +316,42 @@ if (isset($_POST["limit"]) && isset($_POST["start"])) {
         </div>
     </section>
     <script>
-        $(document).ready(function() {
-            /* function for mute and unmute sound icon start */
-            $('.speak').click(function() {
-                if ($(this).hasClass('active')) {
-                    // return; // Ignore click if the icon is already active
-                    tr.Pause();
-                    $(this).removeClass('active');
-                    $(this).html('🔈');
-                    // Change to the desired icon when inactive
-                } else {
-                    // Deactivate previously active icons
-                    $('.speak.active').removeClass('active').html('🔈');
+        // $(document).ready(function() {
+        //     /* function for mute and unmute sound icon start */
+        //     $('.speak').click(function() {
+        //         if ($(this).hasClass('active')) {
+        //             // return; // Ignore click if the icon is already active
+        //             tr.Pause();
+        //             $(this).removeClass('active');
+        //             $(this).html('🔈');
+        //             // Change to the desired icon when inactive
+        //         } else {
+        //             // Deactivate previously active icons
+        //             $('.speak.active').removeClass('active').html('🔈');
 
-                    // Activate the clicked icon
-                    $(this).addClass('active').html('🔊');
+        //             // Activate the clicked icon
+        //             $(this).addClass('active').html('🔊');
+        //         }
+        //     });
+        //     /* function for mute and unmute sound icon end */
+        // });
+        $(document).ready(function() {
+            let isReading = false;
+            let synth = window.speechSynthesis;
+            let utterance = new SpeechSynthesisUtterance('<?php echo $feedId; ?>');
+
+            $('#speaker-btn').click(function() {
+                if (!isReading) {
+                    // Start reading
+                    synth.speak(utterance);
+                    $('#icon').text('🔇');
+                } else {
+                    // Stop reading
+                    synth.cancel();
+                    $('#icon').text('🔊');
                 }
+                isReading = !isReading;
             });
-            /* function for mute and unmute sound icon end */
         });
         /* ==== Code for share_save by ankit 01/09/2023 start === */
         function SavePost(button) {

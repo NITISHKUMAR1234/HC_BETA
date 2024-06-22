@@ -56,7 +56,7 @@
     <!-- code for custome js bundle end -->
 
     <!-- font awesome cdn start -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- font awesome cdn end -->
     <!-- cdn fro jquery start -->
 
@@ -75,13 +75,13 @@
 
     <!-- w3 css start -->
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link  rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <!-- w3 css end -->
 
     <!-- css file start -->
 
-    <link rel="stylesheet" href="css/style.css">
+    <link  rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 
     <!-- css file end -->
