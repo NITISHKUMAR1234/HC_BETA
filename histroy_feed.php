@@ -46,24 +46,28 @@ if (mysqli_num_rows($sql) > 0) {
 
 /* code for check user is already liked or disliked start */
 
-$query = mysqli_query($conn, "SELECT * FROM `tb_like_dlike_details` WHERE fd_user_id = '$user_email' AND MONTH(`fd_his_date`) = '$month' AND DAY(`fd_his_date`) = '$current_date'");
-$liked = "";
-$disliked = "";
-if (mysqli_num_rows($query) > 0) {
-    while ($row = mysqli_fetch_assoc($query)) {
-        if ($row['fdStatus'] == "1") {
-            $liked = "disabled";
-        } else {
-            $liked = "";
-        }
-
-        if ($row['fdStatus'] == "2") {
-            $disliked = "disabled";
-        } else {
-            $disliked = "";
+if(isset($user_email ,$liked,$dislike)){
+    $user_email=$user_email;
+    $query = mysqli_query($conn, "SELECT * FROM `tb_like_dlike_details` WHERE fd_user_id = '$user_email' AND MONTH(`fd_his_date`) = '$month' AND DAY(`fd_his_date`) = '$current_date'");
+    $liked = "";
+    $disliked = "";
+    if (mysqli_num_rows($query) > 0) {
+        while ($row = mysqli_fetch_assoc($query)) {
+            if ($row['fdStatus'] == "1") {
+                $liked = "disabled";
+            } else {
+                $liked = "";
+            }
+            $liked=$liked;
+            if ($row['fdStatus'] == "2") {
+                $disliked = "disabled";
+            } else {
+                $disliked = "";
+            }
+            $dislike=$dislike;
         }
     }
-}
+}else{$user_email="null"; $liked="null"; $disliked="null";}
 
 /* code for check user is already liked or disliked end */
 
