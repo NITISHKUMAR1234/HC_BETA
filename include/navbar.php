@@ -201,9 +201,12 @@
                     if($fetchImgRow['fd_profile_image']){
                     $user_img = $fetchImgRow['fd_profile_image'];
                     }
+                    if(isset($user_img)){
+                        $user_img=$user_img;
                     if(file_exists('Image/'.$user_img)){
                         $profile_img = $user_img;
                     }
+                }else{$user_img="null";}
                 }
                   /* code for fetch user image end */
                 ?>

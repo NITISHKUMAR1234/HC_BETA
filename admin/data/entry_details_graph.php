@@ -1,5 +1,8 @@
 <?php
-session_start(); // session is start
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+//session_start(); // session is start
 
 require_once('../../include/header.php'); // header file include
 /* if user is not logged in then redirect to login page */

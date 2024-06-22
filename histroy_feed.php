@@ -224,6 +224,13 @@ require('include/navbar.php'); // include top navbar
 echo '<div class="card col-12 navigation fixed-bottom">
     <div class="navigation-link pb-3">';
 /* show like,dislike and view card if user is not logged in then that time it will redirect to login page */
+if (isset($totalLikes, $totalDislikes, $viewCount)) {
+    $totalLikes=$totalLikes;
+    $totalDislikes=$totalDislikes;
+    $viewCount=$viewCount;
+}else {$totalLikes='0';
+    $totalDislikes='0'; 
+    $viewCount='0';}
 if (!isset($_SESSION['loginuseremail'])) {
     echo '
         <form method="POST" name="form" id="form">

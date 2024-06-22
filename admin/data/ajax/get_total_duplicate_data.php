@@ -1,5 +1,8 @@
 <?php
-session_start(); // session start
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+//session_start(); // session start
 require_once('../../../include/config.php'); // include connection file
 $admin_id = $_SESSION['admin_id']; // session variable for admin id
 
@@ -14,15 +17,58 @@ $sno = 0; // used for serial number
 /* This query is run when the admin id is equal to 1 and 2 */
 if($admin_id == 1 || $admin_id == 2){   
     /* query for count duplicate entry */
-$duplicateQuery = @mysqli_query($conn,"SELECT fd_id,fd_event_type,fd_img,fd_Country_ID,tb_calender_date,fd_uploaded_on,fd_admin_id,fd_title,fd_sub_title,fd_discription, COUNT(`fd_id`) as total_duplicate FROM tb_history WHERE fd_status = 0 AND fd_delete = 0 GROUP BY
-fd_title,fd_event_type,tb_calender_date HAVING total_duplicate > 1 ORDER BY fd_id DESC LIMIT 30");
+// $duplicateQuery = @mysqli_query($conn,"SELECT fd_id,fd_event_type,fd_img,fd_Country_ID,tb_calender_date,fd_uploaded_on,fd_admin_id,fd_title,fd_sub_title,fd_discription, 
+// COUNT(`fd_id`) as total_duplicate FROM tb_history WHERE fd_status = 0 AND fd_delete = 0 
+// GROUP BY fd_title,fd_event_type,tb_calender_date HAVING total_duplicate > 1 ORDER BY fd_id DESC LIMIT 30");
+$duplicateQuery = @mysqli_query($conn, "
+SELECT h.fd_id, h.fd_event_type, h.fd_img, h.fd_Country_ID, h.tb_calender_date, h.fd_uploaded_on, h.fd_admin_id, h.fd_title, h.fd_sub_title, h.fd_discription, d.total_duplicate
+FROM tb_history h
+JOIN (
+    SELECT fd_title, fd_event_type, tb_calender_date, COUNT(*) as total_duplicate
+    FROM tb_history
+    WHERE fd_status = 0 AND fd_delete = 0
+    GROUP BY fd_title, fd_event_type, tb_calender_date
+    HAVING total_duplicate > 1
+    LIMIT 30
+) d ON h.fd_title = d.fd_title AND h.fd_event_type = d.fd_event_type AND h.tb_calender_date = d.tb_calender_date
+ORDER BY h.fd_id DESC;
+");
 }
 /* This query is run when the admin id is not equal to 1 and 2 */
 else{ 
 /* query for count duplicate entry */
-$duplicateQuery = @mysqli_query($conn,"SELECT fd_id,fd_event_type,fd_img,fd_Country_ID,tb_calender_date,fd_uploaded_on,fd_admin_id,fd_title,fd_sub_title,fd_discription, COUNT(`fd_id`) as total_duplicate FROM tb_history WHERE fd_admin_id =
-$admin_id AND fd_status = 0 AND fd_delete = 0 GROUP BY
-fd_title,fd_event_type,tb_calender_date HAVING total_duplicate > 1 ORDER BY fd_id DESC LIMIT 30");
+// $duplicateQuery = @mysqli_query($conn,"SELECT fd_id,fd_event_type,fd_img,fd_Country_ID,tb_calender_date,fd_uploaded_on,fd_admin_id,fd_title,fd_sub_title,fd_discription, COUNT(`fd_id`) as total_duplicate FROM tb_history WHERE fd_admin_id =
+// $admin_id AND fd_status = 0 AND fd_delete = 0 GROUP BY
+// fd_title,fd_event_type,tb_calender_date HAVING total_duplicate > 1 ORDER BY fd_id DESC LIMIT 30");
+$duplicateQuery = $conn->prepare("
+SELECT 
+    fd_id,
+    fd_event_type,
+    fd_img,
+    fd_Country_ID,
+    tb_calender_date,
+    fd_uploaded_on,
+    fd_admin_id,
+    fd_title,
+    fd_sub_title,
+    fd_discription,
+    COUNT(fd_id) as total_duplicate 
+FROM 
+    tb_history 
+WHERE 
+    fd_admin_id = ? 
+    AND fd_status = 0 
+    AND fd_delete = 0 
+GROUP BY 
+    fd_title,
+    fd_event_type,
+    tb_calender_date 
+HAVING 
+    total_duplicate > 1 
+ORDER BY 
+    fd_id DESC 
+LIMIT 30
+");
 }
 
 if(@mysqli_num_rows($duplicateQuery) > 0){
