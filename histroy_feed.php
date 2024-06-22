@@ -46,7 +46,7 @@ if (mysqli_num_rows($sql) > 0) {
 
 /* code for check user is already liked or disliked start */
 
-if(isset($user_email ,$liked,$dislike)){
+if(isset($user_email , $liked, $dislike)){
     $user_email=$user_email;
     $query = mysqli_query($conn, "SELECT * FROM `tb_like_dlike_details` WHERE fd_user_id = '$user_email' AND MONTH(`fd_his_date`) = '$month' AND DAY(`fd_his_date`) = '$current_date'");
     $liked = "";
