@@ -169,7 +169,7 @@ if (isset($_POST["limit"]) && isset($_POST["start"])) {
                     $start = 0; // Limit start from 0
 
                     /* Query for check historical date is available on database table or not? */
-                    $verifydateQuery = @mysqli_query($conn, "SELECT DISTINCT tb_calender_date,fd_title FROM tb_history WHERE
+                    $verifydateQuery = @mysqli_query($conn, "SELECT DISTINCT tb_calender_date,fd_title, fd_id FROM tb_history WHERE
                 MONTH(`tb_calender_date`)
                 = '$month' AND DAY(`tb_calender_date`) = '$currDate' AND fd_status = 0 AND fd_delete = 0 $event_type ORDER BY fd_id DESC LIMIT $start,$limit");
 
@@ -207,7 +207,7 @@ if (isset($_POST["limit"]) && isset($_POST["start"])) {
                     if (@mysqli_num_rows($dateQuery) > 0) {
 
                         /* query for fetch distinct title,and date */
-                        $titleQuery = "SELECT DISTINCT tb_calender_date,fd_title FROM `tb_history` WHERE fd_status = 0 AND
+                        $titleQuery = "SELECT DISTINCT tb_calender_date, fd_title, fd_id FROM `tb_history` WHERE fd_status = 0 AND
                 fd_delete = 0 AND MONTH(`tb_calender_date`) = '$month' AND DAY(`tb_calender_date`) = '$currDate' ORDER BY fd_id DESC LIMIT $start,
                 $limit";
 
