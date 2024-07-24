@@ -1,0 +1,55 @@
+/* css for login form start */
+.bg-img {
+    /* The image used */
+    background-image: url("../images/login_bg.webp") !important;
+    min-height: 760px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.bg-img:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.container .row .card {
+    margin-top: 150px;
+}
+
+.container .row .card .card-header {
+    background: #7386d5;
+    color: white;
+}
+
+.container .row .card .card-body .form-group .btn {
+    background: #7386d5;
+    color: white;
+}
+
+.container .row .card .card-header h4 {
+    float: left;
+}
+
+.container .row .card .card-header i {
+    float: right;
+    font-size: 25px;
+}
+
+.form-control:focus {
+    border: 1px solid #9c27b0;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border: 1px solid #7386d5;
+    box-shadow: none;
+}
+/* css for login form end */

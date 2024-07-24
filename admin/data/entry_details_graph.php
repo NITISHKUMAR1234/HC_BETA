@@ -16,6 +16,7 @@ if(empty($_SESSION['email'])){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.2.0/chartjs-plugin-zoom.min.js" integrity="sha512-TT0wAMqqtjXVzpc48sI0G84rBP+oTkBZPgeRYIOVRGUdwJsyS3WPipsNh///ay2LJ+onCM23tipnz6EvEy2/UA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <section id="inner-headline">
             <div class="container">
@@ -52,21 +53,21 @@ if(empty($_SESSION['email'])){
                     <div class="col-sm-2">
                         <input class="form-control" name="End_date" id="End_date" value="<?php echo $totDateTime; ?>" placeholder="End Date" type="text" onfocus="(this.type='datetime-local')" required>
                     </div>
-                    <div class="col-sm-1 d-flex flex-row-reverse">
+                    <!-- <div class="col-sm-1 d-flex flex-row-reverse">
                         <label class="col-form-label ">Of</label>
-                    </div>
-                    <div class="col-sm-2">
-                        <!-- <select class="form-control"  > -->
+                    </div> -->
+                    <!-- <div class="col-sm-2">
+                         <select class="form-control"  > 
                         <select class="form-control custom-select btn" name="Attribute" id="Attribute" required>
                             <option value="">Select Parameter</option>
                             <option value="4">Normal Entrys</option>
                             <option value="3">Dublicate Entrys</option>
                             <option value="2">Total Entrys</option>
                             <option value="6">Normal vs Dublicate vs Total</option>
-                            <!-- <option value="1">Super Imposed</option> -->
+                            <option value="1">Super Imposed</option> 
                             <option value="5">Most Viewd Date</option>
                         </select>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row"><br></div>
                 <div class="row d-flex justify-content-center">
@@ -74,7 +75,8 @@ if(empty($_SESSION['email'])){
                         <label class=" col-form-label" style="white-space:nowrap;">Admin ID</label>
                     </div>
                     <div class="col-sm-2">
-                        <select class="form-control custom-select btn" onchange="onChangeCallAjax()" name="SGateDCID" id="SGateDCID">
+                    <!-- <select class="form-control custom-select btn" onchange="onChangeCallAjax()" name="SGateDCID" id="SGateDCID"> -->
+                        <select class="form-control custom-select btn" onchange="onChangeCallAjax()" name="AdminGateID" id="AdminGateID">
 
                         </select>
                     </div>
@@ -82,7 +84,8 @@ if(empty($_SESSION['email'])){
                         <label class="col-form-label">Events</label>
                     </div>
                     <div class="col-sm-2">
-                        <select class="form-control custom-select btn" onchange="onChangeCallAjax()" name="meterSlNo" id="meterSlNo">
+                    <!-- <select class="form-control custom-select btn" onchange="onChangeCallAjax()" name="meterSlNo" id="meterSlNo"> -->
+                        <select class="form-control custom-select btn" onchange="onChangeCallAjax()" name="EventSlNo" id="EventSlNo">
 
                         </select>
                     </div>
@@ -105,49 +108,49 @@ if(empty($_SESSION['email'])){
                 url: 'ajax/getCustomerIdAjax.php',
                 type: 'POST',
                 success:function(getdata,status){
-                    $('#SGateDCID').html(getdata);
+                    $('#AdminGateID').html(getdata);
                 }
                 });
             });
             // code for change Metr slNo acording to stargatedcid
-            $(document).on('change', '#SGateDCID', function() {
-                let SGateDCID = document.getElementById("SGateDCID").value;
+            $(document).on('change', '#AdminGateID', function() {
+                let AdminGateID = document.getElementById("AdminGateID").value;
                 $.ajax({
                 url: 'ajax/fetch_Events_ajax.php',
                 type: 'POST',
-                data: {SGateDCID : SGateDCID},
+                data: {AdminGateID : AdminGateID},
                 success:function(getdata,status){
-                    $('#meterSlNo').html(getdata);
+                    $('#EventSlNo').html(getdata);
                 }
                 });
             });
             // code for load Metr slNo select List default
             $(document).ready(function() {
-                let SGateDCID = document.getElementById("SGateDCID").value;
+                let AdminGateID = document.getElementById("AdminGateID").value;
                 $.ajax({
                 url: 'ajax/fetch_Events_ajax.php',
                 type: 'POST',
-                data: {SGateDCID : SGateDCID},
+                data: {AdminGateID : AdminGateID},
                 success:function(getdata,status){
-                    $('#meterSlNo').html(getdata);
+                    $('#EventSlNo').html(getdata);
                 }
                 });
             });
 
             function ETF(){
-                sGate_id = document.getElementById("SGateDCID").value;
-                emid = document.getElementById("meterSlNo").value;
+                AdminGate_id = document.getElementById("AdminGateID").value;
+                event_id = document.getElementById("EventSlNo").value;
                 s_date = document.getElementById("Start_date").value;
                 e_date = document.getElementById("End_date").value;
-                attribute = document.getElementById("Attribute").value;
+                // attribute = document.getElementById("Attribute").value;
                 // emid = '05584666';
-                    if (sGate_id == "") {
-                        swal("Required Admin ID Field");
-                        return false;
+                    if (AdminGate_id == "") {
+                        // swal("Required Admin ID Field");
+                        // return false;
                     }
-                    if (emid == "") {
-                        swal("Required Events Field");
-                        return false;
+                    if (event_id == "") {
+                        // swal("Required Events Field");
+                        // return false;
                     }
                     if (s_date == "") {
                         swal("Required Start Date Field");
@@ -157,14 +160,14 @@ if(empty($_SESSION['email'])){
                         swal("Required End Date Field");
                         return false;
                     }
-                    if (attribute == "") {
-                        swal("Required Parameter Field");
-                        return false;
-                    }
+                    // if (attribute == "") {
+                    //     swal("Required Parameter Field");
+                    //     return false;
+                    // }
                 $.ajax({
-                    url: 'ajax/EMHDG.php',
+                    url: 'ajax/dataGraph.php',
                     type: 'POST',
-                    data: {s_date : s_date, e_date : e_date, attribute : attribute, emid:emid, sGate_id:sGate_id},
+                    data: {s_date : s_date, e_date : e_date, event_id:event_id, AdminGate_id:AdminGate_id},
                     // success:function(getdata,status){
                     success:function(getdata){
                     $('#chart_ddiv').html(getdata);
